@@ -1,2 +1,0 @@
-ru/stqa/pft/sandbox/HelloWorld.java
- ru.stqa.pft.sandbox.HelloWorld
