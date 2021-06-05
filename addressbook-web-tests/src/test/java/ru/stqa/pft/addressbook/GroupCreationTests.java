@@ -17,14 +17,14 @@ public class GroupCreationTests {
         wd = new ChromeDriver();
         wd.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         wd.get("http://localhost/addressbook/");
-        login();
+        login("admin", "secret");
     }
 
     @Test
     public void testGroupCreation() throws Exception {
         gotoGroupPage();
         initNewGroupCreation();
-        fillGroupForm();
+        fillGroupForm("new group", "unique header", "never used footer");
         submitGroupCreation();
         gotoGroupPage();
         logout();
@@ -34,11 +34,11 @@ public class GroupCreationTests {
         wd.findElement(By.name("submit")).click();
     }
 
-    private void login() {
+    private void login(String userName,String password) {
         wd.findElement(By.name("user")).clear();
-        wd.findElement(By.name("user")).sendKeys("admin");
+        wd.findElement(By.name("user")).sendKeys(userName);
         wd.findElement(By.name("pass")).clear();
-        wd.findElement(By.name("pass")).sendKeys("secret");
+        wd.findElement(By.name("pass")).sendKeys(password);
         wd.findElement(By.xpath("//input[@value='Login']")).click();
     }
 
@@ -46,10 +46,10 @@ public class GroupCreationTests {
         wd.findElement(By.linkText("Logout")).click();
     }
 
-    private void fillGroupForm() {
-        wd.findElement(By.name("group_header")).sendKeys("group header");
-        wd.findElement(By.name("group_name")).sendKeys("group first");
-        wd.findElement(By.name("group_footer")).sendKeys("group footer");
+    private void fillGroupForm(String name, String header, String footer) {
+        wd.findElement(By.name("group_name")).sendKeys(name);
+        wd.findElement(By.name("group_header")).sendKeys(header);
+        wd.findElement(By.name("group_footer")).sendKeys(footer);
     }
 
     private void initNewGroupCreation() {
