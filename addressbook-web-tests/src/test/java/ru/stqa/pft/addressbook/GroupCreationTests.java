@@ -24,7 +24,7 @@ public class GroupCreationTests {
     public void testGroupCreation() throws Exception {
         gotoGroupPage();
         initNewGroupCreation();
-        fillGroupForm("new group", "unique header", "never used footer");
+        fillGroupForm(new GroupData("new group", "unique header", "never used footer"));
         submitGroupCreation();
         gotoGroupPage();
         logout();
@@ -46,10 +46,10 @@ public class GroupCreationTests {
         wd.findElement(By.linkText("Logout")).click();
     }
 
-    private void fillGroupForm(String name, String header, String footer) {
-        wd.findElement(By.name("group_name")).sendKeys(name);
-        wd.findElement(By.name("group_header")).sendKeys(header);
-        wd.findElement(By.name("group_footer")).sendKeys(footer);
+    private void fillGroupForm(GroupData groupData) {
+        wd.findElement(By.name("group_name")).sendKeys(groupData.getName());
+        wd.findElement(By.name("group_header")).sendKeys(groupData.getHeader());
+        wd.findElement(By.name("group_footer")).sendKeys(groupData.getFooter());
     }
 
     private void initNewGroupCreation() {
