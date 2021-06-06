@@ -4,7 +4,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.chrome.ChromeDriver;
-import ru.stqa.pft.addressbook.model.ContactData;
 
 import java.util.concurrent.TimeUnit;
 
@@ -14,6 +13,7 @@ public class ApplicationManager {
     private NavigationHelper navigationHelper;
     private GroupHelper groupHelper;
     private SessionHelper sessionHelper;
+    private AddNewContactHelper addNewContactHelper;
 
     public void init() {
         wd = new ChromeDriver();
@@ -23,29 +23,12 @@ public class ApplicationManager {
         navigationHelper = new NavigationHelper(wd);
         sessionHelper = new SessionHelper(wd);
         sessionHelper.login("admin", "secret");
+        addNewContactHelper = new AddNewContactHelper(wd);
     }
-
 
     public void stop() {
         wd.quit();
     }
-
-
-    public void submitContactCreation() {
-       wd.findElement(By.xpath("(//input[@name='submit'])[2]")).click();
-    }
-
-    public void fillContactForm(ContactData contactData) {
-        wd.findElement(By.name("firstname")).sendKeys(contactData.getName());
-        wd.findElement(By.name("lastname")).sendKeys(contactData.getLastName());
-        wd.findElement(By.name("mobile")).sendKeys(contactData.getMobilePhone());
-        wd.findElement(By.name("email")).sendKeys(contactData.getEmail());
-    }
-
-    public void logout() {
-        wd.findElement(By.linkText("Logout")).click();
-    }
-
 
     public boolean isElementPresent(By by) {
         try {
@@ -73,5 +56,11 @@ public class ApplicationManager {
         return navigationHelper;
     }
 
-    public SessionHelper getSessionHelper() {return sessionHelper;}
+    public SessionHelper getSessionHelper() {
+        return sessionHelper;
+    }
+
+    public AddNewContactHelper getAddNewContactHelper() {
+        return addNewContactHelper;
+    }
 }
