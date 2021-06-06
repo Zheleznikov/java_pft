@@ -1,20 +1,16 @@
 package ru.stqa.pft.addressbook;
 
-import java.util.concurrent.TimeUnit;
-
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.*;
-import org.openqa.selenium.*;
 
 public class ContactCreationTests extends TestBase{
 
     @Test
     public void testContactCreation() throws Exception {
-        gotoAddNewUserPage();
-        fillContactForm(new ContactData("Unique", "New-User-Original", "+1430555555", "unique@gmail.com"));
-        submitContactCreation();
-        gotoHomePage();
-        logout();
+        app.gotoAddNewUserPage();
+        app.fillContactForm(new ContactData("Unique", "New-User-Original", "+1430555555", "unique@gmail.com"));
+        app.submitContactCreation();
+        app.gotoHomePage();
+        app.logout();
     }
 }
 
