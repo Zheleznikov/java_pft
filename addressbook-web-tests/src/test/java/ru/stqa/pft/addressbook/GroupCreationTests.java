@@ -1,7 +1,6 @@
 package ru.stqa.pft.addressbook;
 
 import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.*;
 
@@ -34,7 +33,7 @@ public class GroupCreationTests {
         wd.findElement(By.name("submit")).click();
     }
 
-    private void login(String userName,String password) {
+    private void login(String userName, String password) {
         wd.findElement(By.name("user")).clear();
         wd.findElement(By.name("user")).sendKeys(userName);
         wd.findElement(By.name("pass")).clear();
