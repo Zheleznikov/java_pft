@@ -19,12 +19,24 @@ public class ContactCreationTests {
     }
 
     @Test
-    public void testContactCreationTests() throws Exception {
+    public void testContactCreation() throws Exception {
         gotoAddNewUserPage();
         fillContactForm(new ContactData("Unique", "New-User-Original", "+1430555555", "unique@gmail.com"));
-        wd.findElement(By.xpath("(//input[@name='submit'])[2]")).click();
-        wd.findElement(By.linkText("home")).click();
+        submitContactCreation();
+        gotoHomePage();
+        logout();
+    }
+
+    private void logout() {
         wd.findElement(By.linkText("Logout")).click();
+    }
+
+    private void gotoHomePage() {
+        wd.findElement(By.linkText("home")).click();
+    }
+
+    private void submitContactCreation() {
+        wd.findElement(By.xpath("(//input[@name='submit'])[2]")).click();
     }
 
     private void fillContactForm(ContactData contactData) {
