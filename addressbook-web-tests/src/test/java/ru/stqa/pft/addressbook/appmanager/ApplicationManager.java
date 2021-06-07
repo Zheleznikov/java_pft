@@ -9,7 +9,7 @@ public class ApplicationManager {
     private NavigationHelper navigationHelper;
     private GroupHelper groupHelper;
     private SessionHelper sessionHelper;
-    private AddNewContactHelper addNewContactHelper;
+    private ContactHelper contactHelper;
 
     public void init() {
         wd = new ChromeDriver();
@@ -19,7 +19,7 @@ public class ApplicationManager {
         navigationHelper = new NavigationHelper(wd);
         sessionHelper = new SessionHelper(wd);
         sessionHelper.login("admin", "secret");
-        addNewContactHelper = new AddNewContactHelper(wd);
+        contactHelper = new ContactHelper(wd);
     }
 
     public void stop() {
@@ -38,7 +38,7 @@ public class ApplicationManager {
         return sessionHelper;
     }
 
-    public AddNewContactHelper getAddNewContactHelper() {
-        return addNewContactHelper;
+    public ContactHelper getContactHelper() {
+        return contactHelper;
     }
 }
