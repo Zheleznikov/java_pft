@@ -9,7 +9,7 @@ public class ContactModificationTests extends TestBase {
     public void testContactModification() {
         app.getContactHelper().selectContact();
         app.getContactHelper().modificateSelectedContacts();
-        app.getContactHelper().fillContactForm(new ContactData("Edited Unique", "edited", "+1430555552", "edited@gmail.com"));
+        app.getContactHelper().fillContactForm(new ContactData("Edited Unique", "edited laast", "+1430555532", "edited2@gmail.com", null), false);
         app.getContactHelper().submitContactModification();
         app.getNavigationHelper().gotoHomePage();
         app.getSessionHelper().logout();
