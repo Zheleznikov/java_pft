@@ -13,7 +13,7 @@ public class GroupCreationTests extends TestBase {
 
     @Test
     public void testGroupCreation() throws Exception {
-        GroupData group = new GroupData("some group2", "some header2", "some footer2");
+        GroupData group = new GroupData("group for test contacts", "some header2", "some footer2");
         app.getNavigationHelper().gotoGroupPage();
         List<GroupData> before = app.getGroupHelper().getGroupList();
         app.getGroupHelper().createGroup(group);
