@@ -7,9 +7,10 @@ public class ContactDeletionTests extends TestBase {
 
     @Test
     public void testContactDeletion() {
+        ContactData contact = new ContactData("contact for deleting", "New-User-Original", "+1430555555", "unique@gmail.com", "group for test contacts");
         if (!app.getContactHelper().isThereAContact()) {
             app.getNavigationHelper().gotoAddNewUserPage();
-            app.getContactHelper().createContact(new ContactData("contact for deleting", "New-User-Original", "+1430555555", "unique@gmail.com", "group for test contacts"));
+            app.getContactHelper().createContact(contact);
             app.getNavigationHelper().gotoHomePage();
         }
         app.getContactHelper().selectContact();
