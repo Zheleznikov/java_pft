@@ -44,7 +44,13 @@ public class ContactData {
         return email;
     }
 
-    public String getGroup() {return group;}
+    public String getGroup() {
+        return group;
+    }
+
+    public int getId() {
+        return id;
+    }
 
     @Override
     public String toString() {
@@ -67,4 +73,6 @@ public class ContactData {
     public int hashCode() {
         return Objects.hash(name, lastName);
     }
+
+
 }
