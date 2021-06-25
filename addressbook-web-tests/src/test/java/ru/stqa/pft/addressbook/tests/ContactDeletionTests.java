@@ -14,7 +14,12 @@ public class ContactDeletionTests extends TestBase {
         app.goTo().homePage();
 
         if (app.contact().list().size() == 0) {
-            ContactData contact = new ContactData("contact for deleting", "New-User-Original", "+1430555555", "unique@gmail.com", "group for test contacts");
+            ContactData contact = new ContactData()
+                    .withName("contact for deleting")
+                    .withLastName("contact for deleting")
+                    .withEmail("deleteme@mail.gmail")
+                    .withGroup("group for test contacts")
+                    .withMobilePhone("880050000");
             app.goTo().addNewUserPage();
             app.contact().create(contact);
             app.goTo().homePage();

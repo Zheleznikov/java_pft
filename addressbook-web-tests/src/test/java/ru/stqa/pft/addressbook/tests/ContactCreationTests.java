@@ -11,8 +11,12 @@ public class ContactCreationTests extends TestBase {
 
     @Test
     public void testContactCreation() throws Exception {
-        ContactData contact = new ContactData("new contact", "new contact", "+1430555555", "unique@gmail.com", "group for test contacts");
-
+        ContactData contact = new ContactData()
+                .withName("new contact")
+                .withLastName("new contact")
+                .withMobilePhone("+7900")
+                .withEmail("email@mail.mail")
+                .withGroup("group for test contacts");
         List<ContactData> before = app.contact().list();
 
         app.goTo().addNewUserPage();
