@@ -21,8 +21,6 @@ public class GroupCreationTests extends TestBase {
         app.getNavigationHelper().gotoGroupPage();
 
         List<GroupData> after = app.getGroupHelper().getGroupList();
-        app.getSessionHelper().logout();
-
         Assert.assertEquals(after.size(), before.size() + 1);
         before.add(group);
         Comparator<? super GroupData> byId = Comparator.comparingInt(GroupData::getId);

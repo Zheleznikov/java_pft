@@ -9,6 +9,7 @@ import java.util.HashSet;
 import java.util.List;
 
 public class GroupModificationTests extends TestBase{
+
     @Test
     public void testGroupModification() {
         GroupData groupForCreation = new GroupData("group for edit", "edited header", "edited footer");
@@ -32,8 +33,6 @@ public class GroupModificationTests extends TestBase{
         app.getNavigationHelper().gotoGroupPage();
 
         List<GroupData> after = app.getGroupHelper().getGroupList();
-
-        app.getSessionHelper().logout();
 
         Assert.assertEquals(before.size(), after.size());
         before.remove(before.size() - 1);

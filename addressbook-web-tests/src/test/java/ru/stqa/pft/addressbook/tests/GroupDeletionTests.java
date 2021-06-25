@@ -10,10 +10,10 @@ public class GroupDeletionTests extends TestBase {
 
     @Test
     public void testDeletionGroup() throws Exception {
-        GroupData group = new GroupData("group for deleting", "edited unique header", "edited footer");
 
         app.getNavigationHelper().gotoGroupPage();
         if (!app.getGroupHelper().isThereAGroup()) {
+            GroupData group = new GroupData("group for deleting", "edited unique header", "edited footer");
             app.getGroupHelper().createGroup(group);
         }
         app.getNavigationHelper().gotoGroupPage();

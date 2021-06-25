@@ -30,8 +30,6 @@ public class ContactModificationTests extends TestBase {
 
         List<ContactData> after = app.getContactHelper().getContactList();
 
-        app.getSessionHelper().logout();
-
         Assert.assertEquals(before.size(), after.size());
         before.remove(before.size() - 1);
         before.add(contactForModification);
