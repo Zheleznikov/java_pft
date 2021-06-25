@@ -1,11 +1,17 @@
 package ru.stqa.pft.addressbook.tests;
 
+import org.hamcrest.CoreMatchers;
+import org.hamcrest.MatcherAssert;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.GroupData;
+import ru.stqa.pft.addressbook.model.Groups;
 
 import java.util.Set;
+
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 public class GroupModificationTests extends TestBase{
 
@@ -22,26 +28,25 @@ public class GroupModificationTests extends TestBase{
 
     @Test
     public void testGroupModification() {
-        Set <GroupData> before = app.group().all();
+        Groups before = app.group().all();
         GroupData modifiedGroup = before.iterator().next();
 
         // оставил как пример, что можно передаваь id сюда, хоть это и необязталеьно
         // можно объявить экземпляр класса GroupData в начале метода
         GroupData group = new GroupData()
-                .withId(modifiedGroup.getId()).withName("edited group").withHeader("edited header").withFooter("edited footer");
+                .withId(modifiedGroup.getId())
+                .withName("edited group")
+                .withHeader("edited header")
+                .withFooter("edited footer");
 
         app.group().modify(group);
         app.goTo().groupPage();
 
-        Set<GroupData> after = app.group().all();
-        Assert.assertEquals(before.size(), after.size());
-        before.remove(modifiedGroup);
-        before.add(group);
-
-//        Comparator<? super GroupData> byId = Comparator.comparingInt(GroupData::getId);
-//        before.sort(byId);
-//        after.sort(byId);
-        Assert.assertEquals(before, after);
+        Groups after = app.group().all();
+        assertThat(before.size(), equalTo(after.size()));
+        assertThat(after, equalTo(before
+                .without(modifiedGroup)
+                .withAdded(group)));
     }
 
 
