@@ -5,15 +5,14 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.GroupData;
 
-import java.util.Comparator;
-import java.util.List;
+import java.util.Set;
 
 public class GroupModificationTests extends TestBase{
 
     @BeforeMethod
     public void ensurePreconditions() {
         app.goTo().groupPage();
-        if (app.group().list().size() == 0) {
+        if (app.group().all().size() == 0) {
             GroupData groupForCreation = new GroupData().withName("groupForEdit").withHeader("header for edit").withFooter("footer for edit");
             app.group().create(groupForCreation);
             app.goTo().groupPage();
@@ -23,25 +22,25 @@ public class GroupModificationTests extends TestBase{
 
     @Test
     public void testGroupModification() {
-        List <GroupData> before = app.group().list();
-        int index = before.size() - 1;
+        Set <GroupData> before = app.group().all();
+        GroupData modifiedGroup = before.iterator().next();
 
         // оставил как пример, что можно передаваь id сюда, хоть это и необязталеьно
         // можно объявить экземпляр класса GroupData в начале метода
         GroupData group = new GroupData()
-                .withId(before.get(index).getId()).withName("edited group").withHeader("edited header").withFooter("edited footer");
+                .withId(modifiedGroup.getId()).withName("edited group").withHeader("edited header").withFooter("edited footer");
 
-        app.group().modify(index, group);
+        app.group().modify(group);
         app.goTo().groupPage();
 
-        List<GroupData> after = app.group().list();
+        Set<GroupData> after = app.group().all();
         Assert.assertEquals(before.size(), after.size());
-        before.remove(index);
+        before.remove(modifiedGroup);
         before.add(group);
 
-        Comparator<? super GroupData> byId = Comparator.comparingInt(GroupData::getId);
-        before.sort(byId);
-        after.sort(byId);
+//        Comparator<? super GroupData> byId = Comparator.comparingInt(GroupData::getId);
+//        before.sort(byId);
+//        after.sort(byId);
         Assert.assertEquals(before, after);
     }
 
