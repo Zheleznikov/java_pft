@@ -52,6 +52,13 @@ public class GroupHelper extends HelperBase {
         submitGroupCreation();
     }
 
+    public void modifyGroup(int index, GroupData group) {
+        selectGroup(index);
+        initGroupModification();
+        fillGroupForm(group);
+        submitGroupModification();
+    }
+
     public boolean isThereAGroup() {
         System.out.println("No element");
         return isElementPresent(By.name("selected[]"));
@@ -72,4 +79,6 @@ public class GroupHelper extends HelperBase {
 
         return groups;
     }
-}
+
+
+ }
