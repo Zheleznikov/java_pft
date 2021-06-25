@@ -14,7 +14,7 @@ public class GroupModificationTests extends TestBase{
     public void ensurePreconditions() {
         app.goTo().groupPage();
         if (app.group().list().size() == 0) {
-            GroupData groupForCreation = new GroupData("group for edit", "edited header", "edited footer");
+            GroupData groupForCreation = new GroupData().withName("groupForEdit").withHeader("header for edit").withFooter("footer for edit");
             app.group().create(groupForCreation);
             app.goTo().groupPage();
         }
@@ -28,7 +28,8 @@ public class GroupModificationTests extends TestBase{
 
         // оставил как пример, что можно передаваь id сюда, хоть это и необязталеьно
         // можно объявить экземпляр класса GroupData в начале метода
-        GroupData group = new GroupData(before.get(index).getId(), "edited group", "edited unique header", "edited footer");
+        GroupData group = new GroupData()
+                .withId(before.get(index).getId()).withName("edited group").withHeader("edited header").withFooter("edited footer");
 
         app.group().modify(index, group);
         app.goTo().groupPage();
