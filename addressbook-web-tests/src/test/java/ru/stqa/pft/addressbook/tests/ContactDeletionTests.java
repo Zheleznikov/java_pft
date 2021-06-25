@@ -13,9 +13,9 @@ public class ContactDeletionTests extends TestBase {
         ContactData contact = new ContactData("contact for deleting", "New-User-Original", "+1430555555", "unique@gmail.com", "group for test contacts");
 
         if (!app.getContactHelper().isThereAContact()) {
-            app.getNavigationHelper().gotoAddNewUserPage();
+            app.goTo().gotoAddNewUserPage();
             app.getContactHelper().createContact(contact);
-            app.getNavigationHelper().gotoHomePage();
+            app.goTo().gotoHomePage();
         }
 
         List<ContactData> before = app.getContactHelper().getContactList();
@@ -23,7 +23,7 @@ public class ContactDeletionTests extends TestBase {
         app.getContactHelper().selectContact(before.size() - 1);
         app.getContactHelper().deleteSelectedContacts();
         app.getContactHelper().acceptAlert();
-        app.getNavigationHelper().gotoHomePage();
+        app.goTo().gotoHomePage();
 
         List<ContactData> after = app.getContactHelper().getContactList();
 

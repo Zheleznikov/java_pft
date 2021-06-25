@@ -6,35 +6,34 @@ import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.GroupData;
 
 import java.util.Comparator;
-import java.util.HashSet;
 import java.util.List;
 
 public class GroupModificationTests extends TestBase{
 
     @BeforeMethod
     public void ensurePreconditions() {
-        app.getNavigationHelper().gotoGroupPage();
-        if (!app.getGroupHelper().isThereAGroup()) {
+        app.goTo().groupPage();
+        if (app.group().list().size() == 0) {
             GroupData groupForCreation = new GroupData("group for edit", "edited header", "edited footer");
-            app.getGroupHelper().createGroup(groupForCreation);
-            app.getNavigationHelper().gotoGroupPage();
+            app.group().create(groupForCreation);
+            app.goTo().groupPage();
         }
 
     }
 
     @Test
     public void testGroupModification() {
-        List <GroupData> before = app.getGroupHelper().getGroupList();
+        List <GroupData> before = app.group().list();
         int index = before.size() - 1;
 
         // оставил как пример, что можно передаваь id сюда, хоть это и необязталеьно
         // можно объявить экземпляр класса GroupData в начале метода
         GroupData group = new GroupData(before.get(index).getId(), "edited group", "edited unique header", "edited footer");
 
-        app.getGroupHelper().modifyGroup(index, group);
-        app.getNavigationHelper().gotoGroupPage();
+        app.group().modify(index, group);
+        app.goTo().groupPage();
 
-        List<GroupData> after = app.getGroupHelper().getGroupList();
+        List<GroupData> after = app.group().list();
         Assert.assertEquals(before.size(), after.size());
         before.remove(index);
         before.add(group);

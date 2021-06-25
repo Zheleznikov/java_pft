@@ -14,13 +14,13 @@ public class GroupCreationTests extends TestBase {
     public void testGroupCreation() throws Exception {
         GroupData group = new GroupData("group for test contacts", "some header2", "some footer2");
 
-        app.getNavigationHelper().gotoGroupPage();
-        List<GroupData> before = app.getGroupHelper().getGroupList();
+        app.goTo().groupPage();
+        List<GroupData> before = app.group().list();
 
-        app.getGroupHelper().createGroup(group);
-        app.getNavigationHelper().gotoGroupPage();
+        app.group().create(group);
+        app.goTo().groupPage();
 
-        List<GroupData> after = app.getGroupHelper().getGroupList();
+        List<GroupData> after = app.group().list();
         Assert.assertEquals(after.size(), before.size() + 1);
         before.add(group);
         Comparator<? super GroupData> byId = Comparator.comparingInt(GroupData::getId);
