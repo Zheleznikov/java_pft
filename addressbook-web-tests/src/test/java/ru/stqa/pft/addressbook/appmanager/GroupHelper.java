@@ -84,6 +84,5 @@ public class GroupHelper extends HelperBase {
 
     private void selectById(int id) {
         wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
-
     }
 }

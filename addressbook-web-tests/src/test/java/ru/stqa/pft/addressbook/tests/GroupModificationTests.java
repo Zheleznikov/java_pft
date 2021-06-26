@@ -26,8 +26,6 @@ public class GroupModificationTests extends TestBase{
         GroupSet before = app.group().getAll();
         GroupData modifiedGroup = before.iterator().next();
 
-        // оставил как пример, что можно передаваь id сюда, хоть это и необязталеьно
-        // можно объявить экземпляр класса GroupData в начале метода
         GroupData group = new GroupData()
                 .withId(modifiedGroup.getId())
                 .withName("edited group")
