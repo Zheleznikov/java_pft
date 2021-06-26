@@ -26,8 +26,7 @@ public class GroupCreationTests extends TestBase {
                 before.withAdded(group.withId(after
                         .stream()
                         .mapToInt(GroupData::getId)
-                        .max()
-                        .getAsInt()))));
+                        .max().getAsInt()))));
 
 
     }
