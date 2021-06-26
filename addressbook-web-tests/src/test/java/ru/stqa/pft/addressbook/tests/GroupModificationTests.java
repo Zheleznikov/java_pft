@@ -3,7 +3,7 @@ package ru.stqa.pft.addressbook.tests;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.GroupData;
-import ru.stqa.pft.addressbook.model.Groups;
+import ru.stqa.pft.addressbook.model.GroupSet;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -23,7 +23,7 @@ public class GroupModificationTests extends TestBase{
 
     @Test
     public void testGroupModification() {
-        Groups before = app.group().getAll();
+        GroupSet before = app.group().getAll();
         GroupData modifiedGroup = before.iterator().next();
 
         // оставил как пример, что можно передаваь id сюда, хоть это и необязталеьно
@@ -37,7 +37,7 @@ public class GroupModificationTests extends TestBase{
         app.group().modify(group);
         app.goTo().groupPage();
 
-        Groups after = app.group().getAll();
+        GroupSet after = app.group().getAll();
         assertThat(before.size(), equalTo(after.size()));
         assertThat(after, equalTo(before
                 .without(modifiedGroup)

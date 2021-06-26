@@ -3,7 +3,7 @@ package ru.stqa.pft.addressbook.tests;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.GroupData;
-import ru.stqa.pft.addressbook.model.Groups;
+import ru.stqa.pft.addressbook.model.GroupSet;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -22,11 +22,11 @@ public class GroupDeletionTests extends TestBase {
 
     @Test
     public void testDeletionGroup() throws Exception {
-        Groups before = app.group().getAll();
+        GroupSet before = app.group().getAll();
         GroupData deletedGroup = before.iterator().next();
         app.group().delete(deletedGroup);
         app.goTo().groupPage();
-        Groups after = app.group().getAll();
+        GroupSet after = app.group().getAll();
 
         assertThat(after.size(), equalTo(before.size() - 1));
         assertThat(after, equalTo(before.without(deletedGroup)));
