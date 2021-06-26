@@ -15,11 +15,11 @@ public class GroupCreationTests extends TestBase {
         GroupData group = new GroupData().withName("group for test contacts").withHeader("header").withFooter("footer");
 
         app.goTo().groupPage();
-        Groups before = app.group().all();
+        Groups before = app.group().getAll();
         app.group().create(group);
         app.goTo().groupPage();
 
-        Groups after = app.group().all();
+        Groups after = app.group().getAll();
 
         assertThat(after.size(), equalTo(before.size() + 1));
         assertThat(after, equalTo(
