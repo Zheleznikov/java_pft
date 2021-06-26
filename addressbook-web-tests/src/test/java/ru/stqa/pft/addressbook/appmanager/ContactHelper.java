@@ -79,6 +79,10 @@ public class ContactHelper extends HelperBase {
         contactCache = null;
     }
 
+    public int getCount() {
+        return wd.findElements(By.xpath("//table[@id='maintable']//tr[@name='entry']")).size();
+    }
+
     public boolean isThereAContact() {
         return isElementPresent(By.name("selected[]"));
     }

@@ -19,17 +19,14 @@ public class GroupCreationTests extends TestBase {
         app.group().create(group);
         app.goTo().groupPage();
 
+        assertThat(app.group().getCount(), equalTo(before.size() + 1));
+
         GroupSet after = app.group().getAll();
 
-        assertThat(after.size(), equalTo(before.size() + 1));
         assertThat(after, equalTo(
                 before.withAdded(group.withId(after
                         .stream()
                         .mapToInt(GroupData::getId)
                         .max().getAsInt()))));
-
-
     }
-
-
 }
