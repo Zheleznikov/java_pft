@@ -1,10 +1,16 @@
 package ru.stqa.pft.addressbook.tests;
 
+import org.hamcrest.CoreMatchers;
+import org.hamcrest.MatcherAssert;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
+import ru.stqa.pft.addressbook.model.Contacts;
 
 import java.util.Set;
+
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.MatcherAssert.*;
 
 public class ContactCreationTests extends TestBase {
 
@@ -17,21 +23,20 @@ public class ContactCreationTests extends TestBase {
                 .withEmail("email@mail.mail")
                 .withGroup("group for test contacts");
 
-        Set<ContactData> before = app.contact().getAll();
+        Contacts before = app.contact().getAll();
 
         app.goTo().addNewUserPage();
         app.contact().create(contact);
         app.goTo().homePage();
 
-        Set<ContactData> after = app.contact().getAll();
+        Contacts after = app.contact().getAll();
 
-        contact.withId(
-                after.stream().mapToInt(g -> g.getId()).max().getAsInt());
-
-        Assert.assertEquals(before.size() + 1, after.size());
-
-        before.add(contact);
-        Assert.assertEquals(before, after);
+        assertThat(after.size(), equalTo(before.size() + 1));
+        assertThat(after, equalTo(
+                before.withAdded(contact.withId(after
+                        .stream()
+                        .mapToInt(ContactData::getId)
+                        .max().getAsInt()))));
     }
 }
 
