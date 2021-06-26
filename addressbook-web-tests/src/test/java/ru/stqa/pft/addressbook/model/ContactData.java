@@ -1,5 +1,7 @@
 package ru.stqa.pft.addressbook.model;
 
+import org.openqa.selenium.WebElement;
+
 import java.util.Objects;
 
 public class ContactData {
@@ -9,6 +11,7 @@ public class ContactData {
     private String mobilePhone;
     private String email;
     private String group;
+    private WebElement editIcon;
 
     public String getName() {
         return name;
@@ -87,4 +90,12 @@ public class ContactData {
     }
 
 
+    public ContactData withEditIcon(WebElement editIcon) {
+        this.editIcon = editIcon;
+        return this;
+    }
+
+    public WebElement getEditIcon() {
+        return editIcon;
+    }
 }
