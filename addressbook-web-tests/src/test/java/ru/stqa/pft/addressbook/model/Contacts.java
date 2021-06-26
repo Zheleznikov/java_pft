@@ -28,5 +28,11 @@ public class Contacts extends ForwardingSet<ContactData> {
         return contacts;
     }
 
+    public Contacts without(ContactData contact) {
+        Contacts contacts = new Contacts(this);
+        contacts.remove(contact);
+        return contacts;
+    }
+
 
 }
