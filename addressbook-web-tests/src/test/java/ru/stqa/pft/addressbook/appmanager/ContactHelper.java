@@ -8,7 +8,9 @@ import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class ContactHelper extends HelperBase {
     public ContactHelper(WebDriver wd) {
@@ -68,6 +70,23 @@ public class ContactHelper extends HelperBase {
 
     public List<ContactData> list() {
         List<ContactData> contacts = new ArrayList<>();
+        List<WebElement> elements = wd.findElements(By.xpath("//table[@id='maintable']//tr[@name='entry']"));
+        elements.forEach(el-> {
+            String lastName = el.findElement(By.xpath("./td[2]")).getText();
+            String name = el.findElement(By.xpath("./td[3]")).getText();
+            int id = Integer.parseInt(el.findElement(By.xpath("./td[1]/input")).getAttribute("id"));
+            ContactData contact = new ContactData()
+                    .withId(id)
+                    .withName(name)
+                    .withLastName(lastName);
+            contacts.add(contact);
+        });
+
+        return contacts;
+    }
+
+    public Set <ContactData> getAll() {
+        Set<ContactData> contacts = new HashSet<>();
         List<WebElement> elements = wd.findElements(By.xpath("//table[@id='maintable']//tr[@name='entry']"));
         elements.forEach(el-> {
             String lastName = el.findElement(By.xpath("./td[2]")).getText();
