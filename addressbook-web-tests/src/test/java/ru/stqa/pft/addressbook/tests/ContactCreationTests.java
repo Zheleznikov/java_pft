@@ -15,6 +15,8 @@ public class ContactCreationTests extends TestBase {
                 .withName("new contact")
                 .withLastName("new contact")
                 .withMobilePhone("+7900")
+                .withHomePhone("+7(900)-23")
+                .withWorkPhone("555 55 00")
                 .withEmail("email@mail.mail")
                 .withGroup("group for test contacts");
 
