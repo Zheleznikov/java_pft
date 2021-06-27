@@ -101,6 +101,8 @@ public class ContactHelper extends HelperBase {
         contactCache = new ContactSet();
         List<WebElement> elements = wd.findElements(By.xpath("//table[@id='maintable']//tr[@name='entry']"));
         elements.forEach(el -> {
+            // не работает поиск по ячейкам. Это как-то связано с xpath,
+            // поэтому далее использую поиск для каждого значения findElement
 //            List<WebElement> cells = wd.findElements(By.xpath("./td"));
 //            String lastName = cells.get(1).getText();
 //            String name = cells.get(2).getText();
@@ -130,7 +132,6 @@ public class ContactHelper extends HelperBase {
     public ContactData getInfoFromEditForm(ContactData contact) {
         initContactModificationById(contact.getId());
 
-//        ContactData contact = new ContactData();
         String name = wd.findElement(By.cssSelector("input[name='firstname']")).getAttribute("value");
         String lastName = wd.findElement(By.cssSelector("input[name='lastname']")).getAttribute("value");
         String email = wd.findElement(By.cssSelector("input[name='email']")).getAttribute("value");
