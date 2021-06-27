@@ -96,8 +96,10 @@ public class ContactHelper extends HelperBase {
         contactCache = new ContactSet();
         List<WebElement> elements = wd.findElements(By.xpath("//table[@id='maintable']//tr[@name='entry']"));
         elements.forEach(el -> {
-            String lastName = el.findElement(By.xpath("./td[2]")).getText();
-            String name = el.findElement(By.xpath("./td[3]")).getText();
+            List<WebElement> cells = wd.findElements(By.tagName("td"));
+            String lastName = cells.get(1).getText();
+            String name = cells.get(2).getText();
+            String allPhones = cells.get(5).getText();
             int id = Integer.parseInt(el.findElement(By.xpath("./td[1]/input")).getAttribute("id"));
             WebElement editIcon = el.findElement(By.xpath(".//img[@alt='Edit']"));
 
@@ -110,5 +112,19 @@ public class ContactHelper extends HelperBase {
         });
 
         return contactCache;
+    }
+
+    public ContactData getInfoFromEditForm() {
+
+        ContactData contact = new ContactData();
+        String name = wd.findElement(By.cssSelector("input[name='firstname']")).getAttribute("value");
+        String lastName = wd.findElement(By.cssSelector("input[name='lastname']")).getAttribute("value");
+        String email = wd.findElement(By.cssSelector("input[name='email']")).getAttribute("value");
+        String workPhone = wd.findElement(By.cssSelector("input[name='work']")).getAttribute("value");
+        String mobilePhone = wd.findElement(By.cssSelector("input[name='mobile']")).getAttribute("value");
+        String homePhone = wd.findElement(By.cssSelector("input[name='home']")).getAttribute("value");
+
+        return contact.withName(name).withLastName(lastName).withEmail(email)
+                .withWorkPhone(workPhone).withHomePhone(homePhone).withMobilePhone(mobilePhone);
     }
 }
