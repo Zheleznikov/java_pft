@@ -96,10 +96,13 @@ public class ContactHelper extends HelperBase {
         contactCache = new ContactSet();
         List<WebElement> elements = wd.findElements(By.xpath("//table[@id='maintable']//tr[@name='entry']"));
         elements.forEach(el -> {
-            List<WebElement> cells = wd.findElements(By.tagName("td"));
-            String lastName = cells.get(1).getText();
-            String name = cells.get(2).getText();
-            String allPhones = cells.get(5).getText();
+//            List<WebElement> cells = wd.findElements(By.xpath("./td"));
+//            String lastName = cells.get(1).getText();
+//            String name = cells.get(2).getText();
+
+            String lastName = el.findElement(By.xpath("./td[2]")).getText();
+            String name = el.findElement(By.xpath("./td[3]")).getText();
+            String allPhones = el.findElement(By.xpath("./td[6]")).getText();
             int id = Integer.parseInt(el.findElement(By.xpath("./td[1]/input")).getAttribute("id"));
             WebElement editIcon = el.findElement(By.xpath(".//img[@alt='Edit']"));
 
@@ -107,7 +110,8 @@ public class ContactHelper extends HelperBase {
                     .withId(id)
                     .withName(name)
                     .withLastName(lastName)
-                    .withEditIcon(editIcon);
+                    .withEditIcon(editIcon)
+                    .withAllPhones(allPhones);
             contactCache.add(contact);
         });
 
