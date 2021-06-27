@@ -32,7 +32,6 @@ public class ContactPhoneTest extends TestBase {
 
     @Test
     public void testContactPhone() {
-        app.goTo().homePage();
         ContactData contact = app.contact().getAll().iterator().next();
         app.contact().clickToModify(contact.getEditIcon());
         ContactData contactDataFromEditForm = app.contact().getInfoFromEditForm();
