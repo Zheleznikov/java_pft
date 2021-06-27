@@ -31,8 +31,8 @@ public class ContactAddressTest extends TestBase {
     @Test
     public void testContactAddress() {
         ContactData contact = app.contact().getAll().iterator().next();
-        app.contact().clickToModify(contact.getEditIcon());
-        ContactData contactDataFromEditForm = app.contact().getInfoFromEditForm();
+//        app.contact().clickToModify(contact.getEditIcon());
+        ContactData contactDataFromEditForm = app.contact().getInfoFromEditForm(contact);
 
         assertThat(contact.getCompanyAddress(), equalTo(
                 contactDataFromEditForm.getCompanyAddress()

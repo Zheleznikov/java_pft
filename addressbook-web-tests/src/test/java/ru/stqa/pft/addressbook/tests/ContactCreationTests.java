@@ -12,13 +12,14 @@ public class ContactCreationTests extends TestBase {
     @Test
     public void testContactCreation() throws Exception {
         ContactData contact = new ContactData()
-                .withName("new contact")
-                .withLastName("new contact")
+                .withName("name - new contact")
+                .withLastName("lastName - new contact")
                 .withMobilePhone("+7900")
                 .withHomePhone("+7(900)-23")
                 .withWorkPhone("555 55 00")
                 .withEmail("email@mail.mail")
-                .withGroup("group for test contacts");
+                .withGroup("group for test contacts")
+                .withCompanyAddress("postcard address");
 
         ContactSet before = app.contact().getAll();
 

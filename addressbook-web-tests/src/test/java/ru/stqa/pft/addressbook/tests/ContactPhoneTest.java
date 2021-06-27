@@ -33,8 +33,8 @@ public class ContactPhoneTest extends TestBase {
     @Test
     public void testContactPhone() {
         ContactData contact = app.contact().getAll().iterator().next();
-        app.contact().clickToModify(contact.getEditIcon());
-        ContactData contactDataFromEditForm = app.contact().getInfoFromEditForm();
+//        app.contact().clickToModify(contact.getEditIcon());
+        ContactData contactDataFromEditForm = app.contact().getInfoFromEditForm(contact);
 
         assertThat(contact.getAllPhones(), equalTo(
                 mergePhones(contactDataFromEditForm)
