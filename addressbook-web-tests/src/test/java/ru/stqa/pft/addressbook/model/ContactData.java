@@ -14,6 +14,13 @@ public class ContactData {
     private String email;
     private String group;
     private WebElement editIcon;
+    private String allPhones;
+
+
+
+    public String getAllPhones() {
+        return allPhones;
+    }
 
     public String getName() {
         return name;
@@ -112,6 +119,11 @@ public class ContactData {
 
     public ContactData withWorkPhone(String workPhone) {
         this.workPhone = workPhone;
+        return this;
+    }
+
+    public ContactData withAllPhones(String allPhones) {
+        this.allPhones = allPhones;
         return this;
     }
 
