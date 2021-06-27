@@ -9,6 +9,8 @@ public class ContactData {
     private String name;
     private String lastName;
     private String mobilePhone;
+    private String homePhone;
+    private String workPhone;
     private String email;
     private String group;
     private WebElement editIcon;
@@ -35,6 +37,14 @@ public class ContactData {
 
     public int getId() {
         return id;
+    }
+
+    public String getHomePhone() { return homePhone;}
+
+    public String getWorkPhone() {return workPhone;}
+
+    public WebElement getEditIcon() {
+        return editIcon;
     }
 
     @Override
@@ -95,7 +105,14 @@ public class ContactData {
         return this;
     }
 
-    public WebElement getEditIcon() {
-        return editIcon;
+    public ContactData withHomePhone(String homePhone) {
+        this.homePhone = homePhone;
+        return this;
     }
+
+    public ContactData withWorkPhone(String workPhone) {
+        this.workPhone = workPhone;
+        return this;
+    }
+
 }
