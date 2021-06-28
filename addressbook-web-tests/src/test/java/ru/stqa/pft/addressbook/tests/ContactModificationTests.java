@@ -39,8 +39,7 @@ public class ContactModificationTests extends TestBase {
                 .withMobilePhone("7923")
                 .withEmail("modifiedEmail@mail.email")
                 .withGroup("group for test contacts")
-                .withId(modifiedContact.getId())
-                .withEditIcon(modifiedContact.getEditIcon());
+                .withId(modifiedContact.getId());
 
 
         app.contact().modify(contactForModification);

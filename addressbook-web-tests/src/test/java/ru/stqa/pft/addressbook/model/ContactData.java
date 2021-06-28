@@ -23,7 +23,6 @@ public class ContactData {
 
     private String group;
 
-    private WebElement editIcon;
 
     public String getEmail2() {
         return email2;
@@ -81,9 +80,7 @@ public class ContactData {
 
     public String getWorkPhone() {return workPhone;}
 
-    public WebElement getEditIcon() {
-        return editIcon;
-    }
+
 
     @Override
     public String toString() {
@@ -138,10 +135,6 @@ public class ContactData {
     }
 
 
-    public ContactData withEditIcon(WebElement editIcon) {
-        this.editIcon = editIcon;
-        return this;
-    }
 
     public ContactData withHomePhone(String homePhone) {
         this.homePhone = homePhone;

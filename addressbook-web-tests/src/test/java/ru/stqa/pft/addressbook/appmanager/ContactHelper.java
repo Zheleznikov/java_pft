@@ -70,7 +70,8 @@ public class ContactHelper extends HelperBase {
 
 
     public void modify(ContactData contactForModification) {
-        clickToModify(contactForModification.getEditIcon());
+//        clickToModify(contactForModification.getEditIcon());
+        initContactModificationById(contactForModification.getId());
         fillContactForm(contactForModification, false);
         submitModification();
         contactCache = null;
@@ -101,11 +102,6 @@ public class ContactHelper extends HelperBase {
         contactCache = new ContactSet();
         List<WebElement> elements = wd.findElements(By.xpath("//table[@id='maintable']//tr[@name='entry']"));
         elements.forEach(el -> {
-            // не работает поиск по ячейкам. Это как-то связано с xpath,
-            // поэтому далее использую поиск для каждого значения findElement
-//            List<WebElement> cells = wd.findElements(By.xpath("./td"));
-//            String lastName = cells.get(1).getText();
-//            String name = cells.get(2).getText();
 
             String lastName = el.findElement(By.xpath("./td[2]")).getText();
             String name = el.findElement(By.xpath("./td[3]")).getText();
@@ -113,13 +109,11 @@ public class ContactHelper extends HelperBase {
             String companyAddress = el.findElement(By.xpath("./td[4]")).getText();
             String allEmails = el.findElement(By.xpath("./td[5]")).getText();
             int id = Integer.parseInt(el.findElement(By.xpath("./td[1]/input")).getAttribute("id"));
-            WebElement editIcon = el.findElement(By.xpath(".//img[@alt='Edit']"));
 
             ContactData contact = new ContactData()
                     .withId(id)
                     .withName(name)
                     .withLastName(lastName)
-                    .withEditIcon(editIcon)
                     .withAllPhones(allPhones)
                     .withAllEmails(allEmails)
                     .withCompanyAddress(companyAddress);
