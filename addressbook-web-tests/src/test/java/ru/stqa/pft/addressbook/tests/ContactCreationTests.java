@@ -1,30 +1,49 @@
 package ru.stqa.pft.addressbook.tests;
 
+import com.google.gson.Gson;
+import com.thoughtworks.xstream.XStream;
+import org.openqa.selenium.json.TypeToken;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.ContactSet;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Iterator;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class ContactCreationTests extends TestBase {
 
-    @Test
-    public void testContactCreation() throws Exception {
-        File photo = new File("src/test/resources/ava.png");
-        ContactData contact = new ContactData()
-                .withName("name - new contact")
-                .withLastName("lastName - new contact")
-                .withMobilePhone("+7900")
-                .withHomePhone("+7(900)-23")
-                .withWorkPhone("555 55 00")
-                .withEmail("email@mail.mail")
-                .withGroup("group for test contacts")
-                .withCompanyAddress("postcard address")
-                .withPhoto(photo);
+    @DataProvider
+    public Iterator<Object []> xmlValidContacts() throws IOException {
+        File xmlFile = new File("src/test/resources/contacts.xml");
+        String xml = readFile(xmlFile);
+        XStream xStream = new XStream();
+        xStream.processAnnotations(ContactData.class);
+        List<ContactData> contacts = (List<ContactData>) xStream.fromXML(xml);
+        return contacts.stream().map(c -> new Object[] {c}).collect(Collectors.toList()).iterator();
+    }
 
+    @DataProvider
+    public Iterator<Object[]> jsonValidContacts() throws IOException {
+        File jsonFile = new File("src/test/resources/contacts.json");
+        String json = readFile(jsonFile);
+
+        Gson gson = new Gson();
+        List<ContactData> groups = gson.fromJson(json, new TypeToken<List<ContactData>>() {}.getType());  // List<ContactData>.class
+        return groups.stream().map(c -> new Object[]{c}).collect(Collectors.toList()).iterator();
+    }
+
+    @Test(dataProvider = "jsonValidContacts")
+    public void testContactCreation(ContactData contact) throws Exception {
+//        contact.withPhoto(new File("src/test/resources/ava.png"));
         ContactSet before = app.contact().getAll();
 
         app.goTo().addNewUserPage();
@@ -41,14 +60,17 @@ public class ContactCreationTests extends TestBase {
                         .max().getAsInt()))));
     }
 
-//    @Test(enabled = false)
-//    public void testCurrentDir() {
-//        File currentDir = new File(".");
-//        System.out.println(currentDir.getAbsolutePath());
-//        File photo = new File("src/test/resources/ava.jpg");
-//        System.out.println(photo.getAbsolutePath());
-//        System.out.println(photo.exists());
-//
-//    }
+    private String readFile(File file) throws IOException {
+        String str = "";
+        BufferedReader reader = new BufferedReader(new FileReader(file));
+        String line = reader.readLine();
+        while (line != null) {
+            str += line;
+            line = reader.readLine();
+        }
+        return str;
+    }
+
+
 }
 
