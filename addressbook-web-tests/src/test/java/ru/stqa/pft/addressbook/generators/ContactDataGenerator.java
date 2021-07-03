@@ -96,6 +96,8 @@ public class ContactDataGenerator {
                     .withEmail("email@email.com" + random)
                     .withMobilePhone(String.valueOf(random))
                     .withCompanyAddress("Avenue of Hope, " + random)
+                    .withGroup("group for test contacts")
+                    .withPathToPhoto("src/test/resources/ava.png")
             );
         }
         return contacts;
