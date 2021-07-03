@@ -37,8 +37,10 @@ public class ContactData {
     @Expose
     private String group;
 
-
     private File photo;
+
+    @Expose
+    private String pathToPhoto;
 
     public File getPhoto() {
         return photo;
@@ -100,6 +102,12 @@ public class ContactData {
     public String getWorkPhone() {
         return workPhone;
     }
+
+    public String getPathToPhoto() {
+        return pathToPhoto;
+    }
+
+
 
 
     @Override
@@ -193,6 +201,11 @@ public class ContactData {
 
     public ContactData withPhoto(File photo) {
         this.photo = photo;
+        return this;
+    }
+
+    public ContactData withPathToPhoto(String pathToPhoto) {
+        this.pathToPhoto = pathToPhoto;
         return this;
     }
 
