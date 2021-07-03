@@ -31,6 +31,11 @@ public class HelperBase {
         }
     }
 
+    protected void attach(By locator, String path) {
+        File file = new File(path);
+        wd.findElement(locator).sendKeys(file.getAbsolutePath());
+    }
+
     public void click(By locator) {
         wd.findElement(locator).click();
     }
