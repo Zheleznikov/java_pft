@@ -1,36 +1,48 @@
 package ru.stqa.pft.addressbook.model;
 
+import com.google.gson.annotations.Expose;
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamOmitField;
 import org.openqa.selenium.WebElement;
 
 import java.io.File;
 import java.util.Objects;
 
+@XStreamAlias("contact")
 public class ContactData {
+    @XStreamOmitField
     private int id = Integer.MAX_VALUE;
+    @Expose
     private String name;
+    @Expose
     private String lastName;
-
+    @Expose
     private String companyAddress;
-
+    @Expose
     private String mobilePhone;
+    @Expose
     private String homePhone;
+    @Expose
     private String workPhone;
+    @Expose
     private String allPhones;
-
+    @Expose
     private String email;
+    @Expose
     private String email2;
+    @Expose
     private String email3;
+    @Expose
     private String allEmails;
-
+    @Expose
     private String group;
+
+
+    private File photo;
 
     public File getPhoto() {
         return photo;
     }
-
-
-
-    private File photo;
 
 
     public String getEmail2() {
@@ -38,11 +50,9 @@ public class ContactData {
     }
 
 
-
     public String getEmail3() {
         return email3;
     }
-
 
 
     public String getAllEmails() {
@@ -50,11 +60,9 @@ public class ContactData {
     }
 
 
-
     public String getCompanyAddress() {
         return companyAddress;
     }
-
 
 
     public String getAllPhones() {
@@ -85,10 +93,13 @@ public class ContactData {
         return id;
     }
 
-    public String getHomePhone() { return homePhone;}
+    public String getHomePhone() {
+        return homePhone;
+    }
 
-    public String getWorkPhone() {return workPhone;}
-
+    public String getWorkPhone() {
+        return workPhone;
+    }
 
 
     @Override
@@ -142,7 +153,6 @@ public class ContactData {
         this.group = group;
         return this;
     }
-
 
 
     public ContactData withHomePhone(String homePhone) {
