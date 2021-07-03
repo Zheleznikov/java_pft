@@ -22,13 +22,13 @@ import static org.hamcrest.MatcherAssert.assertThat;
 public class ContactCreationTests extends TestBase {
 
     @DataProvider
-    public Iterator<Object []> xmlValidContacts() throws IOException {
+    public Iterator<Object[]> xmlValidContacts() throws IOException {
         File xmlFile = new File("src/test/resources/contacts.xml");
         String xml = readFile(xmlFile);
         XStream xStream = new XStream();
         xStream.processAnnotations(ContactData.class);
         List<ContactData> contacts = (List<ContactData>) xStream.fromXML(xml);
-        return contacts.stream().map(c -> new Object[] {c}).collect(Collectors.toList()).iterator();
+        return contacts.stream().map(c -> new Object[]{c}).collect(Collectors.toList()).iterator();
     }
 
     @DataProvider
@@ -37,13 +37,13 @@ public class ContactCreationTests extends TestBase {
         String json = readFile(jsonFile);
 
         Gson gson = new Gson();
-        List<ContactData> groups = gson.fromJson(json, new TypeToken<List<ContactData>>() {}.getType());  // List<ContactData>.class
+        List<ContactData> groups = gson.fromJson(json, new TypeToken<List<ContactData>>() {
+        }.getType());  // List<ContactData>.class
         return groups.stream().map(c -> new Object[]{c}).collect(Collectors.toList()).iterator();
     }
 
     @Test(dataProvider = "jsonValidContacts")
     public void testContactCreation(ContactData contact) throws Exception {
-//        contact.withPhoto(new File("src/test/resources/ava.png"));
         ContactSet before = app.contact().getAll();
 
         app.goTo().addNewUserPage();
@@ -61,14 +61,15 @@ public class ContactCreationTests extends TestBase {
     }
 
     private String readFile(File file) throws IOException {
-        String str = "";
-        BufferedReader reader = new BufferedReader(new FileReader(file));
-        String line = reader.readLine();
-        while (line != null) {
-            str += line;
-            line = reader.readLine();
+        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+            String str = "";
+            String line = reader.readLine();
+            while (line != null) {
+                str += line;
+                line = reader.readLine();
+            }
+            return str;
         }
-        return str;
     }
 
 

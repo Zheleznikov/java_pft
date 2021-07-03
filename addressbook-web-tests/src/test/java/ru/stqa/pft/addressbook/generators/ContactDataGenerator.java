@@ -77,9 +77,12 @@ public class ContactDataGenerator {
     }
 
     private void writeFile(File file, String obj) throws IOException {
-        Writer writer = new FileWriter(file);
-        writer.write(obj);
-        writer.close();
+//        Writer writer = new FileWriter(file);
+//        writer.write(obj);
+//        writer.close();
+        try (Writer writer = new FileWriter(file);) {
+            writer.write(obj);
+        }
     }
 
     private void soutAboutUnrecognizedFormat(String format) {
