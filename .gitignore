@@ -14,3 +14,9 @@ gradle-app.setting
 # gradle/wrapper/gradle-wrapper.properties
 
 .idea/
+
+contacts.json
+contacts.xml
+groups.json
+groups.xml
+groups.csv
