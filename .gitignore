@@ -20,3 +20,5 @@ contacts.xml
 groups.json
 groups.xml
 groups.csv
+
+*.log
