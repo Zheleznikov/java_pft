@@ -6,6 +6,8 @@
             <class name="ru.stqa.pft.addressbook.tests.GroupCreationTests" />
             <class name="ru.stqa.pft.addressbook.tests.GroupModificationTests" />
             <class name="ru.stqa.pft.addressbook.tests.GroupDeletionTests" />
+            <class name="ru.stqa.pft.addressbook.tests.DbConnectionTest" />
+            <class name="ru.stqa.pft.addressbook.tests.HbConnectionTest" />
         </classes>
     </test>
 </suite>
