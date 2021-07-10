@@ -100,6 +100,7 @@ public class ContactDataGenerator {
                     .withMobilePhone(String.valueOf(random))
                     .withCompanyAddress("Avenue of Hope, " + random)
                     .withGroup("group for test contacts")
+//                    .withPhoto(new File("src/test/resources/ava.png"))
                     .withPathToPhoto("src/test/resources/ava.png")
             );
         }
