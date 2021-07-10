@@ -18,13 +18,13 @@ import java.util.List;
 public class GroupDataGenerator {
 
     @Parameter(names = {"-c", "--count"}, description = "Group count")
-    public int count;
+    public int count = 5;
 
     @Parameter(names = {"-f", "--file"}, description = "Target file")
-    public String file;
+    public String file = "src/test/resources/groups.json";
 
     @Parameter(names = {"-d", "--dataFormat"}, description = "Data format")
-    public String format;
+    public String format = "json";
 
     public static void main(String[] args) throws IOException {
         GroupDataGenerator generator = new GroupDataGenerator();
@@ -100,7 +100,7 @@ public class GroupDataGenerator {
         for (int i = 0; i < count; i++) {
             groups.add(
                     new GroupData()
-                            .withName(String.format("test group name - %s", i))
+                            .withName("group for test contacts")
                             .withHeader(String.format("test group header - %s", i))
                             .withFooter(String.format("test group footer - %s", i))
             );
