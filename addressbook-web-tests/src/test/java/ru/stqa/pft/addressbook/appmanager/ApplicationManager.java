@@ -21,19 +21,21 @@ public class ApplicationManager {
     private GroupHelper groupHelper;
     private SessionHelper sessionHelper;
     private ContactHelper contactHelper;
+    private DbHelper dbHelper;
 
     private String browser;
+    private Properties properties;
 
     public ApplicationManager(String browser)  {
         this.browser = browser;
-
+        properties = new Properties();
     }
 
     public void init() throws IOException {
-
         String target = System.getProperty("target", "local");
-        Properties properties = new Properties();
         properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties", target))));
+        dbHelper = new DbHelper();
+
 
         if (browser.equals(BrowserType.CHROME)) {
             wd = new ChromeDriver();
@@ -74,4 +76,9 @@ public class ApplicationManager {
     public ContactHelper contact() {
         return contactHelper;
     }
+
+    public DbHelper db() {
+        return dbHelper;
+    }
+
 }
