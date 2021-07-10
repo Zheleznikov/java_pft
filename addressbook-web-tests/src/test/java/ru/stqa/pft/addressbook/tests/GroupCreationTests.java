@@ -81,13 +81,13 @@ public class GroupCreationTests extends TestBase {
     @Test(dataProvider = "jsonValidGroups")
     public void testGroupCreation(GroupData group) throws Exception {
         app.goTo().groupPage();
-        GroupSet before = app.group().getAll();
+        GroupSet before = app.db().getAllGroups();
         app.group().create(group);
         app.goTo().groupPage();
 
         assertThat(app.group().getCount(), equalTo(before.size() + 1));
 
-        GroupSet after = app.group().getAll();
+        GroupSet after = app.db().getAllGroups();
 
         assertThat(after, equalTo(
                 before.withAdded(group.withId(after
