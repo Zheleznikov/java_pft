@@ -22,3 +22,4 @@ groups.xml
 groups.csv
 
 *.log
+log/

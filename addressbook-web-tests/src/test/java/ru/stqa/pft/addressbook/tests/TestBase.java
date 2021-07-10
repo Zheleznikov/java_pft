@@ -20,9 +20,8 @@ public class TestBase {
     protected static final ApplicationManager app = new ApplicationManager(System.getProperty("browser", BrowserType.CHROME));
 
 
-    @BeforeSuite(alwaysRun = true)
+    @BeforeSuite
     public void setUp() throws Exception {
-        System.out.println(System.getProperty("browser"));
         app.init();
     }
 
