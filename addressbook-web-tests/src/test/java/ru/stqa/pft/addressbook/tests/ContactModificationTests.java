@@ -40,6 +40,7 @@ public class ContactModificationTests extends TestBase {
                 .withMobilePhone("7923")
                 .withEmail("modifiedEmail@mail.email")
                 .withGroup("group for test contacts")
+                .withCompanyAddress("avenue")
                 .withId(modifiedContact.getId());
 
 
@@ -49,10 +50,6 @@ public class ContactModificationTests extends TestBase {
         assertThat(app.contact().getCount(), equalTo(before.size()));
 
         ContactSet after = app.db().getAllContacts();
-        System.out.println("Before");
-        after.forEach(el -> System.out.println(el));
-        System.out.println("After");
-        before.forEach(el -> System.out.println(el));
 
         assertThat(after, equalTo(
                 before

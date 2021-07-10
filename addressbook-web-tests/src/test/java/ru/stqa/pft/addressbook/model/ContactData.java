@@ -171,12 +171,13 @@ public class ContactData {
                 && Objects.equals(name, that.name)
                 && Objects.equals(lastName, that.lastName)
                 && Objects.equals(email, that.email)
-                && Objects.equals(mobilePhone, that.mobilePhone);
+                && Objects.equals(mobilePhone, that.mobilePhone)
+                && Objects.equals(companyAddress, that.companyAddress);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, lastName, email, mobilePhone);
+        return Objects.hash(id, name, lastName, email, mobilePhone, companyAddress);
     }
 
     public ContactData withId(int id) {
