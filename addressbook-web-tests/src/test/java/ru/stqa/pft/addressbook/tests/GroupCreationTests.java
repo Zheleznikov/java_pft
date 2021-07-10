@@ -94,5 +94,8 @@ public class GroupCreationTests extends TestBase {
                         .stream()
                         .mapToInt(GroupData::getId)
                         .max().getAsInt()))));
+
+        verifyGroupListInUI();
+
     }
 }
