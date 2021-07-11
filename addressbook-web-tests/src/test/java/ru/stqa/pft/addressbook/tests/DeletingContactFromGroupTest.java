@@ -60,9 +60,7 @@ public class DeletingContactFromGroupTest extends TestBase {
 
         app.goTo().homePage();
 
-        app.contact().selectGroupToCheck(group.getId());
-        app.contact().selectContactById(randomContactToAddingInGroup.getId());
-        app.contact().removeFromGroup();
+        app.contact().removeContactFromGroup(group.getId(), randomContactToAddingInGroup.getId());
 
         ContactData contactFromDb = app.db().getCurrentContact(randomContactToAddingInGroup.getId());
 
@@ -71,6 +69,7 @@ public class DeletingContactFromGroupTest extends TestBase {
         ));
 
     }
+
 
 
     @AfterMethod

@@ -181,4 +181,11 @@ public class ContactHelper extends HelperBase {
     public void removeFromGroup() {
         wd.findElement(By.cssSelector("input[name='remove']")).click();
     }
+
+
+    public void removeContactFromGroup(int groupId, int contactId) {
+        selectGroupToCheck(groupId);
+        selectContactById(contactId);
+        removeFromGroup();
+    }
 }
