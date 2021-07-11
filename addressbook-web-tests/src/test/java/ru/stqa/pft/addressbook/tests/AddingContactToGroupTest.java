@@ -25,14 +25,13 @@ public class AddingContactToGroupTest extends TestBase {
         if (app.db().getAllGroups().size() == 0) {
             createGroup();
         }
-
     }
 
     @Test
     public void testAddingContactToGroup() {
-        ContactData randomContactToAddingInGroup = app.db().getAllContacts().iterator().next(); // получили произвольный контакт из БД
+        ContactData before = app.db().getAllContacts().iterator().next(); // получили произвольный контакт из БД
         GroupSet groupsFromDb = app.db().getAllGroups(); // создали сет из групп на основе групп из БД
-        GroupSet groupsFromContact = randomContactToAddingInGroup.getGroups(); // создали сет из групп на основе тех, что связаны с контактом
+        GroupSet groupsFromContact = before.getGroups(); // создали сет из групп на основе тех, что связаны с контактом
         groupsFromDb.removeAll(groupsFromContact); // оставили в сете групп из БД только те группы, которых нет в списке групп контакта
 
         if (groupsFromDb.size() == 0) { // если к контакту привязаны все имеющиеся в БД группы, то
@@ -43,32 +42,16 @@ public class AddingContactToGroupTest extends TestBase {
         GroupData groupToAdd = groupsFromDb.iterator().next();
 
         app.goTo().homePage();
-        app.contact().addContactToGroup(randomContactToAddingInGroup.getId(), groupToAdd.getId());
+        app.contact().addContactToGroup(before.getId(), groupToAdd.getId());
 
-        ContactData contactFromDb = app.db().getCurrentContact(randomContactToAddingInGroup.getId());
+        ContactData after = app.db().getCurrentContact(before.getId());
 
-        assertThat(contactFromDb, equalTo(
-                randomContactToAddingInGroup.inGroup(groupToAdd)
+        assertThat(after, equalTo(
+                before.inGroup(groupToAdd)
         ));
     }
 
-    private void createGroup() {
-        app.goTo().groupPage();
-        app.group().create(new GroupData().withName("Group for adding contact2"));
-        app.goTo().homePage();
-    }
 
-    private void createContact() {
-        ContactData contact = new ContactData()
-                .withName("contact for adding in group")
-                .withLastName("contact for adding in group")
-                .withEmail("addingingroup@mail.gmail")
-                .withMobilePhone("880050000");
-        app.goTo().homePage();
-        app.goTo().addNewUserPage();
-        app.contact().create(contact);
-        app.goTo().homePage();
-    }
 
 
 }
