@@ -12,23 +12,7 @@ import javax.swing.*;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-/**
- * Псевдокод
- * <p>
- * предусловие
- * 1. Если контактов нет, то создаем новый контакт
- * 2. Создаем новую группу
- * <p>
- * ТЕСТ
- * 1. Получаем любой контакт из БД
- * 2. Получаем созданную в предусловии группу из БД
- * 3. Добавляем контакт в группу через UI
- * 4. Получаем данные нового контакта из БД
- * 5. Сравниваем
- * <p>
- * постусловие
- * 1. Удаляем созданную группу
- */
+
 public class AddingContactToGroupTest extends TestBase {
 
 
