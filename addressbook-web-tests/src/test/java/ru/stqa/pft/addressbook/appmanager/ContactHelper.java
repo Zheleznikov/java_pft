@@ -174,4 +174,11 @@ public class ContactHelper extends HelperBase {
     }
 
 
+    public void selectGroupToCheck(int id) {
+        new Select(wd.findElement(By.name("group"))).selectByValue(String.valueOf(id));
+    }
+
+    public void removeFromGroup() {
+        wd.findElement(By.cssSelector("input[name='remove']")).click();
+    }
 }
