@@ -171,6 +171,7 @@ public class ContactData {
                 ", companyAddress='" + companyAddress + '\'' +
                 ", mobilePhone='" + mobilePhone + '\'' +
                 ", email='" + email + '\'' +
+                ", groups='" + groups + '\'' +
                 '}';
     }
 
@@ -184,12 +185,13 @@ public class ContactData {
                 && Objects.equals(lastName, that.lastName)
                 && Objects.equals(email, that.email)
                 && Objects.equals(mobilePhone, that.mobilePhone)
-                && Objects.equals(companyAddress, that.companyAddress);
+                && Objects.equals(companyAddress, that.companyAddress)
+                && Objects.equals(groups, that.groups);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, lastName, email, mobilePhone, companyAddress);
+        return Objects.hash(id, name, lastName, email, mobilePhone, companyAddress, groups);
     }
 
     public ContactData withId(int id) {
