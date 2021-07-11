@@ -33,8 +33,10 @@ public class ContactHelper extends HelperBase {
         attach(By.name("photo"), contactData.getPathToPhoto());
 
         if (creation) {
-            new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
-        } else {
+            new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroups().iterator().next().getName());
+        }
+        else
+        {
             Assert.assertFalse(isElementPresent(By.name("new_group")));
         }
     }
