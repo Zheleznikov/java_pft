@@ -10,6 +10,7 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import ru.stqa.pft.addressbook.appmanager.ApplicationManager;
+import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.GroupData;
 import ru.stqa.pft.addressbook.model.GroupSet;
 
@@ -62,6 +63,24 @@ public class TestBase {
             )
                     .collect(Collectors.toSet())));
         }
+    }
+
+    public void createGroup() {
+        app.goTo().groupPage();
+        app.group().create(new GroupData().withName("Group for adding contact2"));
+        app.goTo().homePage();
+    }
+
+    public void createContact() {
+        ContactData contact = new ContactData()
+                .withName("contact for adding in group")
+                .withLastName("contact for adding in group")
+                .withEmail("addingingroup@mail.gmail")
+                .withMobilePhone("880050000");
+        app.goTo().homePage();
+        app.goTo().addNewUserPage();
+        app.contact().create(contact);
+        app.goTo().homePage();
     }
 
 }
