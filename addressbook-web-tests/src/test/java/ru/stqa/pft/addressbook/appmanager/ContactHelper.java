@@ -158,4 +158,20 @@ public class ContactHelper extends HelperBase {
 
         wd.findElement(By.cssSelector(String.format("a[href='edit.php?id=%s']", id))).click();
     }
+
+    public void selectGroupToAdd(int id) {
+        new Select(wd.findElement(By.name("to_group"))).selectByValue(String.valueOf(id));
+    }
+
+    public void submitAddingContactToGroup() {
+        wd.findElement(By.cssSelector("input[name='add']")).click();
+    }
+
+    public void addContactToGroup(int contactId, int groupId) {
+        selectContactById(contactId);
+        selectGroupToAdd(groupId);
+        submitAddingContactToGroup();
+    }
+
+
 }
