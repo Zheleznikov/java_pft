@@ -77,7 +77,7 @@ public class TestBase {
                 .withLastName("contact for adding in group")
                 .withEmail("addingingroup@mail.gmail")
                 .withMobilePhone("880050000");
-        app.goTo().homePage();
+
         app.goTo().addNewUserPage();
         app.contact().create(contact);
         app.goTo().homePage();

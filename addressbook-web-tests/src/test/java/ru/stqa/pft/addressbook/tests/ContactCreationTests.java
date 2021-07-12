@@ -45,9 +45,6 @@ public class ContactCreationTests extends TestBase {
 
     @Test(dataProvider = "jsonValidContacts")
     public void testContactCreation(ContactData contact) throws Exception {
-        GroupSet groups = app.db().getAllGroups();
-        contact.inGroup(groups.iterator().next());
-
         ContactSet before = app.db().getAllContacts();
 
         app.goTo().addNewUserPage();
