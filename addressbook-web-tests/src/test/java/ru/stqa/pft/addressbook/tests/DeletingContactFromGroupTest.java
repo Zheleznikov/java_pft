@@ -33,8 +33,7 @@ public class DeletingContactFromGroupTest extends TestBase {
             app.goTo().homePage();
             app.contact().addContactToGroup(before.getId(), groupToAdd.getId()); // добавляем контакт в группу
 
-            ContactData beforeWithGroup = app.db().getCurrentContact(before.getId()); // находим исходный контакт в БД
-            contactGroups.addAll(beforeWithGroup.getGroups()); // добавляем к пустому списку групп исходного конткта, группу нового контакта
+            contactGroups.addAll(app.db().getCurrentContact(before.getId()).getGroups()); // добавляем к пустому списку групп исходного контакта полученную группу
             contactGroups.forEach(before::inGroup); // добавляем новую группу к нашему контакту
         }
 
