@@ -1,0 +1,56 @@
+apply plugin: 'java'
+
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.testng:testng:7.4.0'
+    implementation 'org.seleniumhq.selenium:selenium-java:4.0.0-beta-3'
+    implementation 'org.hamcrest:java-hamcrest:2.0.0.0'
+    implementation 'com.beust:jcommander:1.81'
+    implementation group: 'com.thoughtworks.xstream', name: 'xstream', version: '1.4.15'
+    implementation 'com.google.code.gson:gson:2.8.7'
+    implementation 'ch.qos.logback:logback-classic:1.1.5'
+    implementation 'mysql:mysql-connector-java:8.0.25'
+    implementation group: 'org.hibernate', name: 'hibernate-core', version: '5.5.3.Final'
+}
+
+test {
+    useTestNG()
+}
+
+task testGroups(type : Test) {
+    useTestNG {
+        suites 'src/test/resources/testng-groups.xml'
+    }
+
+    if (project.hasProperty('browser')) {
+        systemProperty 'browser', "${browser}"
+    }
+    if (project.hasProperty('target')) {
+        systemProperty 'target', "${target}"
+    }
+
+    if (project.hasProperty('verifyUI')) {
+        systemProperty 'verifyUI', "${verifyUI}"
+    }
+
+}
+
+task testContacts(type : Test) {
+    useTestNG {
+        suites 'src/test/resources/testng-contacts.xml'
+    }
+    if (project.hasProperty('browser')) {
+        systemProperty 'browser', "${browser}"
+    }
+    if (project.hasProperty('target')) {
+        systemProperty 'target', "${target}"
+    }
+
+    if (project.hasProperty('verifyUI')) {
+        systemProperty 'verifyUI', "${verifyUI}"
+    }
+}
