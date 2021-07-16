@@ -5,9 +5,9 @@ import org.testng.annotations.Test;
 
 public class PointTests {
 
-    Point p1 = new Point(0, 0);
-    Point p2 = new Point(0, 0);
-    Point p3 = new Point(3, 4);
+    PointP p1 = new PointP(0, 0);
+    PointP p2 = new PointP(0, 0);
+    PointP p3 = new PointP(3, 4);
 
     @Test
     public void pointPositive() {

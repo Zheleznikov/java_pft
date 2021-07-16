@@ -1,11 +1,9 @@
 package ru.stqa.pft.sandbox;
 
-import java.sql.SQLOutput;
-
 class HelloWorld {
     public static void main(String[] args) {
-        Point p1 = new Point(-3,-4);
-        Point p2 = new Point(0,0);
+        PointP p1 = new PointP(-3,-4);
+        PointP p2 = new PointP(0,0);
 
         double distance1_2 = distance(p1, p2);
         System.out.println("Расстояние между точками 1 и 2. Расчитано с помощью функции distance");
@@ -13,8 +11,8 @@ class HelloWorld {
         System.out.println();
 
 
-        Point p3 = new Point(4, 5);
-        Point p4 = new Point(0,0);
+        PointP p3 = new PointP(4, 5);
+        PointP p4 = new PointP(0,0);
 
         double distance3_4 = p3.distance(p4);
         System.out.println("Расстояние между точками 3 и 4. Расчитано с помощью метода класса distance");
@@ -23,8 +21,8 @@ class HelloWorld {
 
         // А сейчас создадим класс Point со случайными значениями и передадим в его метод distance также класс со случайными значениями
 
-        Point p5 = new Point(getRandomPoint(),getRandomPoint());
-        Point p6 = new Point(getRandomPoint(),getRandomPoint());
+        PointP p5 = new PointP(getRandomPoint(),getRandomPoint());
+        PointP p6 = new PointP(getRandomPoint(),getRandomPoint());
         System.out.println("Точки x и y p5");
         System.out.println(p5.getX());
         System.out.println(p5.getY());
@@ -44,7 +42,7 @@ class HelloWorld {
      * @param p2
      * @return расстояние между двумя точками
      */
-    public static double distance (Point p1, Point p2) {
+    public static double distance (PointP p1, PointP p2) {
         double distanceX = p1.getX() - p2.getX();
         double distanceY = p1.getY() - p2.getY();
         return Math.sqrt(distanceX * distanceX + distanceY * distanceY);
