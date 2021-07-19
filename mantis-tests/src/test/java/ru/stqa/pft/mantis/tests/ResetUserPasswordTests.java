@@ -29,24 +29,26 @@ public class ResetUserPasswordTests extends TestBase {
         String newPass = "secret pass";
         List<Map<String, String>> allUsers = app.db().getAllUsers();
 
-//        if (allUsers.size() == 0)
-//        {
-//            System.out.println("Это не работает");
-//            app.registration().register();
-//            randomUser = app.db().getAllUsers().get(0);
-//
-//        }
-//        else {
+        if (allUsers.size() == 0)
+        {
+            System.out.println("Это не работает");
+            app.registration().register();
+            randomUser = app.db().getAllUsers().get(0);
+
+        }
+        else {
             randomUser = allUsers.get((int) (Math.random() * allUsers.size()));
-//        }
+        }
 
         app.admin().signInAsAdministrator();
         app.admin().goToManageUsers();
 
 //        способ получить случайного пользователя через ui
 //        randomUser = app.admin().getUserList().removeAdministratorFromList().getRandomUser();
+
         app.admin().goToManageUser(randomUser);
         app.admin().resetPassword();
+
         MailMessage mailMessages = app.mail().waitForMail(1, 10000).get(0);
         String confirmationLink = findConfirmationLink(mailMessages);
         app.registration().finish(confirmationLink, newPass);
