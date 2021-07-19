@@ -22,7 +22,7 @@ test {
     useTestNG()
 }
 
-task testGroups(type : Test) {
+task testAll(type : Test) {
     useTestNG {
         suites 'src/test/resources/testng.xml'
     }
