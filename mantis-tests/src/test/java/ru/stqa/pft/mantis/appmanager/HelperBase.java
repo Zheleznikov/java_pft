@@ -4,8 +4,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import ru.lanwen.verbalregex.VerbalExpression;
+import ru.stqa.pft.mantis.model.MailMessage;
 
 import java.io.File;
+import java.util.List;
 
 public class HelperBase {
 
@@ -54,5 +57,11 @@ public class HelperBase {
         } catch (NoSuchElementException ex) {
             return false;
         }
+    }
+
+    public String findConfirmationLink(List<MailMessage> mailMessages, String email) {
+        MailMessage mailMessage = mailMessages.stream().filter(m -> m.to.equals(email)).findFirst().get();
+        VerbalExpression regex = VerbalExpression.regex().find("http://").nonSpace().oneOrMore().build();
+        return regex.getText(mailMessage.text);
     }
 }
