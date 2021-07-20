@@ -71,4 +71,11 @@ public class AdministratorHelper extends HelperBase {
         type(By.name("password_confirm"), newPass);
         click(By.className("btn-success"));
     }
+
+    public void createUser(String username, String email) {
+        click(By.xpath("//a[contains(@class, 'btn btn-primary btn-white btn-round btn-sm')]"));
+        type(By.name("username"), username);
+        type(By.name("email"), email);
+        click(By.cssSelector("input[value='Create User']"));
+    }
 }
