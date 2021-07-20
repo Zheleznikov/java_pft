@@ -7,11 +7,8 @@ import ru.lanwen.verbalregex.VerbalExpression;
 import ru.stqa.pft.mantis.model.MailMessage;
 
 import java.io.IOException;
-import java.sql.*;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Random;
 
 import static org.testng.Assert.assertTrue;
 
@@ -31,17 +28,15 @@ public class ResetUserPasswordTests extends TestBase {
 
         if (allUsers.size() == 0)
         {
-            System.out.println("Это не работает");
-            app.registration().register();
-            randomUser = app.db().getAllUsers().get(0);
-
+            System.out.println("Oops");
+            System.out.println("No users in mantis, you should add new user manually");
         }
         else {
+            app.admin().signInAsAdministrator();
+            app.admin().goToManageUsers();
             randomUser = allUsers.get((int) (Math.random() * allUsers.size()));
         }
 
-        app.admin().signInAsAdministrator();
-        app.admin().goToManageUsers();
 
 //        способ получить случайного пользователя через ui
 //        randomUser = app.admin().getUserList().removeAdministratorFromList().getRandomUser();
@@ -49,8 +44,8 @@ public class ResetUserPasswordTests extends TestBase {
         app.admin().goToManageUser(randomUser);
         app.admin().resetPassword();
 
-        MailMessage mailMessages = app.mail().waitForMail(1, 10000).get(0);
-        String confirmationLink = findConfirmationLink(mailMessages);
+        MailMessage mailMessage = app.mail().waitForMail(1, 10000).get(0);
+        String confirmationLink = findConfirmationLink(mailMessage);
         app.registration().finish(confirmationLink, newPass);
         assertTrue(app.newSession().login(randomUser.get("name"), newPass));
     }
@@ -64,6 +59,13 @@ public class ResetUserPasswordTests extends TestBase {
     private String findConfirmationLink(MailMessage mailMessage) {
         VerbalExpression regex = VerbalExpression.regex().find("http://").nonSpace().oneOrMore().build();
         return regex.getText(mailMessage.text);
+    }
 
+    @Test
+    public void TestTheories() {
+        app.admin().signInAsAdministrator();
+        app.admin().goToManageUsers();
+        app.admin().createUser("userevihw", "userevicwh@mail.com");
+        app.admin().goToManageUsers();
     }
 }
