@@ -5,6 +5,16 @@ public class Issue {
     private String summary;
     private String description;
     private Project project;
+    private boolean isOpen;
+
+    public boolean isOpen() {
+        return isOpen;
+    }
+
+    public Issue withOpen(boolean open) {
+        isOpen = open;
+        return this;
+    }
 
     public int getId() {
         return id;
