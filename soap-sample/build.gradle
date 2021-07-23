@@ -1,0 +1,47 @@
+apply plugin: 'java'
+
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.testng:testng:7.4.0'
+    implementation "javax.xml.bind:jaxb-api:2.3.1"
+    implementation "javax.xml.ws:jaxws-api:2.3.1"
+    implementation "org.glassfish.jaxb:jaxb-runtime:2.3.2"
+    implementation "org.glassfish.main.javaee-api:javax.jws:3.1.2.2"
+    implementation "com.sun.xml.messaging.saaj:saaj-impl:1.5.1"
+
+}
+
+test {
+    useTestNG()
+}
+
+buildscript {
+    repositories {
+        jcenter()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'no.nils:wsdl2java:0.12'
+    }
+}
+
+apply plugin: 'no.nils.wsdl2java'
+
+
+wsdl2java {
+//    wsdlDir = file("src/main/java") // define to support incremental build
+//    wsdlsToGenerate = [   //  2d-array of wsdls and cxf-parameters
+//                          ['src/main/resources/ipservice.wsdl'],
+//    ]
+//    cxfVersion = "2.5.1"
+//    cxfPluginVersion = "2.4.0"
+
+    wsdlDir = file("/src/main/resources") // define to support incremental build
+    wsdlsToGenerate = [   //  2d-array of wsdls and cxf-parameters
+                          ['/src/main/resources/ipservice.wsdl'],
+    ]
+}
