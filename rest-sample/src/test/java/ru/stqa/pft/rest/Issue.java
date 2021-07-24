@@ -1,11 +1,22 @@
 package ru.stqa.pft.rest;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.Objects;
 
 public class Issue {
     private int id;
     private String subject;
     private String description;
+
+    @SerializedName(value = "state_name", alternate = "status")
+    private String stateName;
+
+    public String getStateName() {
+        return stateName;
+    }
+
+
 
     public int getId() {
         return id;
@@ -46,4 +57,16 @@ public class Issue {
     public int hashCode() {
         return Objects.hash(id, subject, description);
     }
+
+    @Override
+    public String toString() {
+        return "Issue{" +
+                "id=" + id +
+                ", subject='" + subject + '\'' +
+                ", description='" + description + '\'' +
+                ", stateName='" + stateName + '\'' +
+                '}';
+    }
+
+
 }
