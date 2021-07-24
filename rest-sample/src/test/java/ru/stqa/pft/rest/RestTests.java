@@ -17,11 +17,7 @@ import static org.testng.Assert.assertEquals;
 
 
 
-public class RestTests {
-
-    private final String HOST = "https://bugify.stqa.ru/api/";
-    private final String API_KEY = "288f44776e7bec4bf44fdfeb1e646490";
-
+public class RestTests extends TestBase{
 
     @Test
     public void testCreateIssue() throws IOException {
