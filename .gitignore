@@ -23,3 +23,5 @@ groups.csv
 
 *.log
 log/
+
+git.properties
