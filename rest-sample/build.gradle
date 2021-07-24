@@ -10,6 +10,7 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.7'
     implementation 'org.apache.httpcomponents:httpclient:4.5.13'
     implementation 'org.apache.httpcomponents:fluent-hc:4.5.13'
+    implementation 'io.rest-assured:rest-assured-parent:4.4.0'
 
 }
 
