@@ -1,4 +1,4 @@
-package ru.stqa.pft.rest;
+package ru.stqa.pft.github;
 
 
 import com.google.gson.Gson;
