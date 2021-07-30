@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Name614",
+    "lastName": "Lastname614",
+    "companyAddress": "Avenue of Hope, 614",
+    "mobilePhone": "614",
+    "email": "email@email.com614",
+    "pathToPhoto": "src/test/resources/ava.png"
+  },
+  {
+    "name": "Name611",
+    "lastName": "Lastname611",
+    "companyAddress": "Avenue of Hope, 611",
+    "mobilePhone": "611",
+    "email": "email@email.com611",
+    "pathToPhoto": "src/test/resources/ava.png"
+  },
+  {
+    "name": "Name259",
+    "lastName": "Lastname259",
+    "companyAddress": "Avenue of Hope, 259",
+    "mobilePhone": "259",
+    "email": "email@email.com259",
+    "pathToPhoto": "src/test/resources/ava.png"
+  }
+]

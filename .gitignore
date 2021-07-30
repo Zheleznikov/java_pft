@@ -15,11 +15,7 @@ gradle-app.setting
 
 .idea/
 
-contacts.json
-contacts.xml
-groups.json
-groups.xml
-groups.csv
+
 
 *.log
 log/
