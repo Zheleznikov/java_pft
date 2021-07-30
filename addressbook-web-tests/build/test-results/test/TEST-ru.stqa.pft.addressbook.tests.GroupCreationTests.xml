@@ -1,36 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ru.stqa.pft.addressbook.tests.GroupCreationTests" tests="5" skipped="0" failures="0" errors="0" timestamp="2021-07-30T07:46:17" hostname="HPW" time="4.905">
+<testsuite name="ru.stqa.pft.addressbook.tests.GroupCreationTests" tests="5" skipped="0" failures="0" errors="0" timestamp="2021-07-30T09:10:01" hostname="HPW" time="5.222">
   <properties/>
-  <testcase name="testGroupCreation[0](GroupData{id='2147483647', name='group for test contacts'})" classname="ru.stqa.pft.addressbook.tests.GroupCreationTests" time="1.025"/>
-  <testcase name="testGroupCreation[1](GroupData{id='2147483647', name='group for test contacts'})" classname="ru.stqa.pft.addressbook.tests.GroupCreationTests" time="0.943"/>
-  <testcase name="testGroupCreation[2](GroupData{id='2147483647', name='group for test contacts'})" classname="ru.stqa.pft.addressbook.tests.GroupCreationTests" time="0.91"/>
-  <testcase name="testGroupCreation[3](GroupData{id='2147483647', name='group for test contacts'})" classname="ru.stqa.pft.addressbook.tests.GroupCreationTests" time="0.996"/>
-  <testcase name="testGroupCreation[4](GroupData{id='2147483647', name='group for test contacts'})" classname="ru.stqa.pft.addressbook.tests.GroupCreationTests" time="1.029"/>
-  <system-out><![CDATA[10:46:17.609 [Test worker] INFO  r.s.pft.addressbook.tests.TestBase - Start test - testGroupCreation with parameters [GroupData{id='2147483647', name='group for test contacts'}]
+  <testcase name="testGroupCreation[0](GroupData{id='2147483647', name='group for test contacts'})" classname="ru.stqa.pft.addressbook.tests.GroupCreationTests" time="1.033"/>
+  <testcase name="testGroupCreation[1](GroupData{id='2147483647', name='group for test contacts'})" classname="ru.stqa.pft.addressbook.tests.GroupCreationTests" time="1.016"/>
+  <testcase name="testGroupCreation[2](GroupData{id='2147483647', name='group for test contacts'})" classname="ru.stqa.pft.addressbook.tests.GroupCreationTests" time="1.054"/>
+  <testcase name="testGroupCreation[3](GroupData{id='2147483647', name='group for test contacts'})" classname="ru.stqa.pft.addressbook.tests.GroupCreationTests" time="1.034"/>
+  <testcase name="testGroupCreation[4](GroupData{id='2147483647', name='group for test contacts'})" classname="ru.stqa.pft.addressbook.tests.GroupCreationTests" time="1.081"/>
+  <system-out><![CDATA[12:10:01.313 [Test worker] INFO  r.s.pft.addressbook.tests.TestBase - Start test - testGroupCreation with parameters [GroupData{id='2147483647', name='group for test contacts'}]
 Hibernate: select groupdata0_.group_id as group_id1_2_, groupdata0_.group_footer as group_fo2_2_, groupdata0_.group_header as group_he3_2_, groupdata0_.group_name as group_na4_2_ from group_list groupdata0_ where deprecated='0000-00-00 00:00:00'
 Hibernate: select groupdata0_.group_id as group_id1_2_, groupdata0_.group_footer as group_fo2_2_, groupdata0_.group_header as group_he3_2_, groupdata0_.group_name as group_na4_2_ from group_list groupdata0_ where deprecated='0000-00-00 00:00:00'
 Hibernate: select groupdata0_.group_id as group_id1_2_, groupdata0_.group_footer as group_fo2_2_, groupdata0_.group_header as group_he3_2_, groupdata0_.group_name as group_na4_2_ from group_list groupdata0_ where deprecated='0000-00-00 00:00:00'
-10:46:18.634 [Test worker] INFO  r.s.pft.addressbook.tests.TestBase - Stop test - testGroupCreation
-10:46:18.635 [Test worker] INFO  r.s.pft.addressbook.tests.TestBase - Start test - testGroupCreation with parameters [GroupData{id='2147483647', name='group for test contacts'}]
+12:10:02.346 [Test worker] INFO  r.s.pft.addressbook.tests.TestBase - Stop test - testGroupCreation
+12:10:02.347 [Test worker] INFO  r.s.pft.addressbook.tests.TestBase - Start test - testGroupCreation with parameters [GroupData{id='2147483647', name='group for test contacts'}]
 Hibernate: select groupdata0_.group_id as group_id1_2_, groupdata0_.group_footer as group_fo2_2_, groupdata0_.group_header as group_he3_2_, groupdata0_.group_name as group_na4_2_ from group_list groupdata0_ where deprecated='0000-00-00 00:00:00'
 Hibernate: select groupdata0_.group_id as group_id1_2_, groupdata0_.group_footer as group_fo2_2_, groupdata0_.group_header as group_he3_2_, groupdata0_.group_name as group_na4_2_ from group_list groupdata0_ where deprecated='0000-00-00 00:00:00'
 Hibernate: select groupdata0_.group_id as group_id1_2_, groupdata0_.group_footer as group_fo2_2_, groupdata0_.group_header as group_he3_2_, groupdata0_.group_name as group_na4_2_ from group_list groupdata0_ where deprecated='0000-00-00 00:00:00'
-10:46:19.578 [Test worker] INFO  r.s.pft.addressbook.tests.TestBase - Stop test - testGroupCreation
-10:46:19.579 [Test worker] INFO  r.s.pft.addressbook.tests.TestBase - Start test - testGroupCreation with parameters [GroupData{id='2147483647', name='group for test contacts'}]
+12:10:03.363 [Test worker] INFO  r.s.pft.addressbook.tests.TestBase - Stop test - testGroupCreation
+12:10:03.364 [Test worker] INFO  r.s.pft.addressbook.tests.TestBase - Start test - testGroupCreation with parameters [GroupData{id='2147483647', name='group for test contacts'}]
 Hibernate: select groupdata0_.group_id as group_id1_2_, groupdata0_.group_footer as group_fo2_2_, groupdata0_.group_header as group_he3_2_, groupdata0_.group_name as group_na4_2_ from group_list groupdata0_ where deprecated='0000-00-00 00:00:00'
 Hibernate: select groupdata0_.group_id as group_id1_2_, groupdata0_.group_footer as group_fo2_2_, groupdata0_.group_header as group_he3_2_, groupdata0_.group_name as group_na4_2_ from group_list groupdata0_ where deprecated='0000-00-00 00:00:00'
 Hibernate: select groupdata0_.group_id as group_id1_2_, groupdata0_.group_footer as group_fo2_2_, groupdata0_.group_header as group_he3_2_, groupdata0_.group_name as group_na4_2_ from group_list groupdata0_ where deprecated='0000-00-00 00:00:00'
-10:46:20.489 [Test worker] INFO  r.s.pft.addressbook.tests.TestBase - Stop test - testGroupCreation
-10:46:20.489 [Test worker] INFO  r.s.pft.addressbook.tests.TestBase - Start test - testGroupCreation with parameters [GroupData{id='2147483647', name='group for test contacts'}]
+12:10:04.418 [Test worker] INFO  r.s.pft.addressbook.tests.TestBase - Stop test - testGroupCreation
+12:10:04.419 [Test worker] INFO  r.s.pft.addressbook.tests.TestBase - Start test - testGroupCreation with parameters [GroupData{id='2147483647', name='group for test contacts'}]
 Hibernate: select groupdata0_.group_id as group_id1_2_, groupdata0_.group_footer as group_fo2_2_, groupdata0_.group_header as group_he3_2_, groupdata0_.group_name as group_na4_2_ from group_list groupdata0_ where deprecated='0000-00-00 00:00:00'
 Hibernate: select groupdata0_.group_id as group_id1_2_, groupdata0_.group_footer as group_fo2_2_, groupdata0_.group_header as group_he3_2_, groupdata0_.group_name as group_na4_2_ from group_list groupdata0_ where deprecated='0000-00-00 00:00:00'
 Hibernate: select groupdata0_.group_id as group_id1_2_, groupdata0_.group_footer as group_fo2_2_, groupdata0_.group_header as group_he3_2_, groupdata0_.group_name as group_na4_2_ from group_list groupdata0_ where deprecated='0000-00-00 00:00:00'
-10:46:21.485 [Test worker] INFO  r.s.pft.addressbook.tests.TestBase - Stop test - testGroupCreation
-10:46:21.485 [Test worker] INFO  r.s.pft.addressbook.tests.TestBase - Start test - testGroupCreation with parameters [GroupData{id='2147483647', name='group for test contacts'}]
+12:10:05.454 [Test worker] INFO  r.s.pft.addressbook.tests.TestBase - Stop test - testGroupCreation
+12:10:05.454 [Test worker] INFO  r.s.pft.addressbook.tests.TestBase - Start test - testGroupCreation with parameters [GroupData{id='2147483647', name='group for test contacts'}]
 Hibernate: select groupdata0_.group_id as group_id1_2_, groupdata0_.group_footer as group_fo2_2_, groupdata0_.group_header as group_he3_2_, groupdata0_.group_name as group_na4_2_ from group_list groupdata0_ where deprecated='0000-00-00 00:00:00'
 Hibernate: select groupdata0_.group_id as group_id1_2_, groupdata0_.group_footer as group_fo2_2_, groupdata0_.group_header as group_he3_2_, groupdata0_.group_name as group_na4_2_ from group_list groupdata0_ where deprecated='0000-00-00 00:00:00'
 Hibernate: select groupdata0_.group_id as group_id1_2_, groupdata0_.group_footer as group_fo2_2_, groupdata0_.group_header as group_he3_2_, groupdata0_.group_name as group_na4_2_ from group_list groupdata0_ where deprecated='0000-00-00 00:00:00'
-10:46:22.514 [Test worker] INFO  r.s.pft.addressbook.tests.TestBase - Stop test - testGroupCreation
+12:10:06.535 [Test worker] INFO  r.s.pft.addressbook.tests.TestBase - Stop test - testGroupCreation
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
