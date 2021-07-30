@@ -28,7 +28,7 @@ public class TestBase {
 
 
     private TestBase getIssueFromApi(int id) {
-        issueFromApi =  given()
+        issueFromApi = given()
                 .get(HOST + "issues/" + id + ".json")
                 .asString();
         return this;

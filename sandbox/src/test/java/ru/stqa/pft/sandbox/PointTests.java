@@ -11,7 +11,7 @@ public class PointTests {
 
     @Test
     public void pointPositive() {
-        Assert.assertEquals(p1.distance(p3), 4.0);
+        Assert.assertEquals(p1.distance(p3), 5.0);
     }
 
     @Test
