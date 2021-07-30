@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ru.stqa.pft.sandbox.PointTests" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-07-30T07:04:02" hostname="HPW" time="0.011">
+<testsuite name="ru.stqa.pft.sandbox.PointTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-07-30T07:21:55" hostname="HPW" time="0.007">
   <properties/>
-  <testcase name="pointNegative" classname="ru.stqa.pft.sandbox.PointTests" time="0.008"/>
-  <testcase name="pointPositive" classname="ru.stqa.pft.sandbox.PointTests" time="0.0"/>
-  <testcase name="pointZero" classname="ru.stqa.pft.sandbox.PointTests" time="0.0"/>
+  <testcase name="pointNegative" classname="ru.stqa.pft.sandbox.PointTests" time="0.007"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
