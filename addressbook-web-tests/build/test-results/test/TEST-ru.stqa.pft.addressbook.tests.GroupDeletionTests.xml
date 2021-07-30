@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ru.stqa.pft.addressbook.tests.GroupDeletionTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-07-30T07:46:22" hostname="HPW" time="0.627">
+  <properties/>
+  <testcase name="testDeletionGroup" classname="ru.stqa.pft.addressbook.tests.GroupDeletionTests" time="0.627"/>
+  <system-out><![CDATA[Hibernate: select groupdata0_.group_id as group_id1_2_, groupdata0_.group_footer as group_fo2_2_, groupdata0_.group_header as group_he3_2_, groupdata0_.group_name as group_na4_2_ from group_list groupdata0_ where deprecated='0000-00-00 00:00:00'
+10:46:22.629 [Test worker] INFO  r.s.pft.addressbook.tests.TestBase - Start test - testDeletionGroup with parameters []
+Hibernate: select groupdata0_.group_id as group_id1_2_, groupdata0_.group_footer as group_fo2_2_, groupdata0_.group_header as group_he3_2_, groupdata0_.group_name as group_na4_2_ from group_list groupdata0_ where deprecated='0000-00-00 00:00:00'
+Hibernate: select groupdata0_.group_id as group_id1_2_, groupdata0_.group_footer as group_fo2_2_, groupdata0_.group_header as group_he3_2_, groupdata0_.group_name as group_na4_2_ from group_list groupdata0_ where deprecated='0000-00-00 00:00:00'
+Hibernate: select groupdata0_.group_id as group_id1_2_, groupdata0_.group_footer as group_fo2_2_, groupdata0_.group_header as group_he3_2_, groupdata0_.group_name as group_na4_2_ from group_list groupdata0_ where deprecated='0000-00-00 00:00:00'
+10:46:23.256 [Test worker] INFO  r.s.pft.addressbook.tests.TestBase - Stop test - testDeletionGroup
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
